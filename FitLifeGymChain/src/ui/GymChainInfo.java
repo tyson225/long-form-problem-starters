@@ -8,10 +8,7 @@ import model.gym.DeluxeGym;
 import model.gym.FitnessClass;
 import model.gym.Gym;
 import model.members.Member;
-import model.weights.Barbell;
-import model.weights.Dumbbell;
-import model.weights.Plate;
-import model.weights.WeightMachine;
+import model.weights.*;
 
 import static model.members.MembershipLevel.*;
 
@@ -24,10 +21,8 @@ public class GymChainInfo {
     public static final String JAMES_MEMBER_NAME = "James";
     public static final String MICHELA_MEMBER_NAME = "Michela";
 
-    //TODO 1: assign a different value to the constant below
-    public static final String YOUR_GYM_NAME = "Your Gym";
-    //TODO 1: assign a different value to the constant below
-    public static final String YOUR_MEMBER_NAME = "Your Name";
+    public static final String DANNYS_GYM = "Danny's Gym";
+    public static final String TYSON_MCDONALD = "Tyson McDonald";
 
     public static void main(String[] args) {
         GymChain chain = new GymChain();
@@ -50,11 +45,9 @@ public class GymChainInfo {
         chain.signUpMember(m2);
         chain.signUpMember(m3);
 
-        //TODO 3: construct a new Member object with the parameter YOUR_MEMBER_NAME
-//        Member m4 = ...
-        //TODO 3: uncomment these 2 lines:
-//        m4.setMembershipLevel(DELUXE);
-//        chain.signUpMember(m4);
+        Member m4 = new Member(TYSON_MCDONALD);
+        m4.setMembershipLevel(DELUXE);
+        chain.signUpMember(m4);
     }
 
     private static void loadGyms(GymChain chain){
@@ -64,10 +57,9 @@ public class GymChainInfo {
 
         WeightMachine wm = new WeightMachine("quadriceps", 75);
 
-        //TODO 2: pass in parameters to these methods:
-//        g1.setHasPool(...);
-//        wm.setWeight(...);
-//        g1.addWeight(...);
+        g1.setHasPool(false);
+        wm.setWeight(100);
+        g1.addWeight(wm);
 
 
         Gym g2 = new DeluxeGym(PINE_VALLEY_GYM_NAME);
@@ -78,21 +70,17 @@ public class GymChainInfo {
         initializeGym3(g3);
         chain.addGym(g3);
 
-        //TODO 4: pick a variable name for the gym below and uncomment:
-//        Gym ... = new Gym(YOUR_GYM_NAME);
-        //TODO 4: add your new gym's variable name and uncomment:
-//        initializeGym0(...);
-        //TODO 4: add your new gym's variable name and uncomment:
-//        chain.addGym(...);
+        Gym dannys = new Gym(DANNYS_GYM);
+        initializeGym0(dannys);
+        chain.addGym(dannys);
     }
 
 
     private static void initializeGym0(Gym gym){
-        //TODO 4: uncomment the next 4 lines:
-//         Barbell bar = //TODO 4: make a new barbell
-//         IndoorBike bike = //TODO 4: make a new IndoorBike
-//         gym.addWeight(bar);
-//         gym.addCardioMachine(bike);
+         Barbell bar = new Barbell(25);
+         IndoorBike bike = new IndoorBike();
+         gym.addWeight(bar);
+         gym.addCardioMachine(bike);
 
 //        NOTE: the Barbell constructor takes one parameter, an int
 //        NOTE: the IndoorBike constructor doesn't take any parameters
